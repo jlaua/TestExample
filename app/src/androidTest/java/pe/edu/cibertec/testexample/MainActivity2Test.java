@@ -35,6 +35,12 @@ public class MainActivity2Test extends ActivityUnitTestCase<MainActivity> {
     }
 
     public void testLaunchNextActivity(){
+        startActivity(mLaunchIntent, null, null);
+        mBtnNext = (Button) getActivity().findViewById(R.id.btnNext);
+        mBtnNext.performClick();
+        Intent intent = getStartedActivityIntent();
+        assertNotNull("New Intent is null " , intent);
+        assertNotNull(isFinishCalled());
 
     }
 

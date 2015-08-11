@@ -1,5 +1,7 @@
 package pe.edu.cibertec.testexample;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +15,7 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     private EditText mEdtA, mEdtB;
     private TextView mTxtResult;
@@ -30,11 +32,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnSubs = (Button) findViewById(R.id.btnSubs);
         Button btnMult = (Button) findViewById(R.id.btnMult);
         Button btnDiv = (Button) findViewById(R.id.btnDiv);
+        Button btnNext = (Button) findViewById(R.id.btnNext);
         mTxtResult = (TextView) findViewById(R.id.txtResult);
         btnSum.setOnClickListener(this);
         btnSubs.setOnClickListener(this);
         btnMult.setOnClickListener(this);
         btnDiv.setOnClickListener(this);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
 
@@ -55,6 +66,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnDiv:
                 result = div(a, b);
+                break;
+            case R.id.btnNext:
+                Intent intent = new Intent(this,MainActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
 
